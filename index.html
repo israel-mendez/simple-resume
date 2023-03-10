@@ -7,13 +7,22 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
     <script src="scripts/script.js"></script>
     <title>Israel's Site</title>
+
+    <style>
+        .carousel-item {
+          display: none;
+        }
+        .carousel-item.active {
+          display: block;
+        }
+    </style>
 </head>
 
 <body>
     <div class="centered">
         <table cell-spacing="20">
             <tr>
-                <td><img src="images/profile.png" alt=""></td>
+                <td><img style="padding-right: 70%; margin-right: 35%;" src="images/profile.png" alt=""></td>
                 <td><h1>Israel Méndez</h1>
                     <h4>Full Stack Java Developer</h4>
                     <p><a href="contact.html">Contact Me</a> <a href="appointment.html">Set Appointment</a></p>
@@ -126,9 +135,47 @@
     <div class="centered">
         <h3>Rate This Page:</h3>
         <div>
-          <button class="rate-button" onclick="rateGood()">👍</button>
-          <button class="rate-button" onclick="rateBad()">👎</button>
+          <button class="rate-button" onclick="rateGood()"><img src="images/thumbs-up.gif" alt="thumbs-up"></button>
+          <button class="rate-button" onclick="rateBad()"><img src="images/thumbs-down.gif" alt="thumbs-down"></button>
         </div>
-      </div>
+    </div>
+
+    <hr>
+
+    <h1 class="centered">My Favorite Tools</h1>
+    <div class="centered">
+          <div id="tool-carousel">
+            <script>
+                var images = ['images/image1.png', 'images/image2.png', 'images/image3.png', 'images/image4.png', 'images/image5.png', 'images/image6.png', 'images/image7.png'];
+
+                var currentImageIndex = 0;
+                var carouselItemClass = 'carousel-item';
+
+                function updateCarousel() {
+                var carousel = document.getElementById('tool-carousel');
+                carousel.innerHTML = '';
+
+                var carouselItem = document.createElement('div');
+                carouselItem.classList.add(carouselItemClass);
+                carouselItem.classList.add('active');
+                var img = document.createElement('img');
+                img.src = images[currentImageIndex];
+                img.style.width = "250px";
+                img.style.height = "250px";
+                carouselItem.appendChild(img);
+                carousel.appendChild(carouselItem);
+
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+
+                var prevCarouselItem = document.querySelector('.' + carouselItemClass + ':not(.active)');
+                if (prevCarouselItem) {
+                    prevCarouselItem.classList.remove('active');
+                }
+                setTimeout(updateCarousel, 2000);
+                }
+                updateCarousel();
+            </script>
+          </div>
+    </div>
 </body>
 </html>
