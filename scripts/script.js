@@ -1,14 +1,18 @@
-const chatIcon = document.querySelector('.chat-icon');
-const ratings = ['😡', '👎', '🤔', '👍', '😍'];
-
-function showRatingPrompt() {
-  const rating = prompt('How would you rate my profile?\n\n😡 = Terrible\n👎 = Poor\n🤔 = Average\n👍 = Good\n😍 = Excellent');
-  
-  if (rating && ratings.includes(rating)) {
-    alert(`Thank you for your rating: ${rating}`);
-  } else {
-    alert('Invalid rating, please try again.');
-  }
+function rateGood() {
+  var btn = document.getElementsByClassName("rate-button")[0];
+  btn.classList.add("pressed");
+  setTimeout(function() {
+    btn.classList.remove("pressed");
+    alert("Thank you for rating this page as good!");
+  }, 200);
 }
 
-chatIcon.addEventListener('click', showRatingPrompt);
+function rateBad() {
+  var btn = document.getElementsByClassName("rate-button")[1];
+  btn.classList.add("pressed");
+  setTimeout(function() {
+    btn.classList.remove("pressed");
+    alert("We're sorry to hear that you didn't enjoy this page. Please provide us with feedback on how we can improve it.");
+  }, 200);
+  
+}
